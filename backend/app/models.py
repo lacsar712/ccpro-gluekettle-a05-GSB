@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 from typing import ClassVar, Optional
 
+from sqlalchemy import Index
 from sqlmodel import Field, Relationship, SQLModel
 
 
@@ -36,6 +37,7 @@ class Kettle(SQLModel, table=True):
     bench: int = 0
     workshop: Optional[Workshop] = Relationship(back_populates="kettles")
     cooks: list["CookLog"] = Relationship(back_populates="kettle")
+    melt_certs: list["MeltCert"] = Relationship(back_populates="kettle")
 
 
 class CookLog(SQLModel, table=True):
@@ -45,3 +47,29 @@ class CookLog(SQLModel, table=True):
     peak_temp_c: float
     operator: str = ""
     kettle: Optional[Kettle] = Relationship(back_populates="cooks")
+
+
+class MeltCert(SQLModel, table=True):
+    """溶化证：一炉一张，证号本锅内不得与现行（未核销）证重复。"""
+
+    __tablename__ = "meltcert"
+    __table_args__ = (
+        # 本锅现行证号唯一：仅约束未核销的证，核销后同号可再开。
+        Index(
+            "uq_meltcert_kettle_certno_active",
+            "kettle_id",
+            "cert_no",
+            unique=True,
+            postgresql_where="used_at IS NULL",
+        ),
+    )
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    kettle_id: int = Field(foreign_key="kettle.id")
+    cert_no: int = Field(index=True)
+    melt_temp_c: float
+    issued_by: str = ""
+    issued_at: datetime = Field(default_factory=utcnow)
+    used_at: Optional[datetime] = Field(default=None, index=True)
+    used_by: str = ""
+    kettle: Optional[Kettle] = Relationship(back_populates="melt_certs")

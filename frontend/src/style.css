@@ -1,11 +1,24 @@
 body { margin: 0; font-family: Georgia, serif; background: #f3ece3; color: #3a2a1d; }
 .wrap { max-width: 920px; margin: 0 auto; padding: 28px 16px 48px; }
 .row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; }
-.kettle { min-width: 110px; min-height: 140px; border-radius: 50% 50% 12px 12px; color: #fff; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.kettle { min-width: 110px; min-height: 140px; border-radius: 50% 50% 12px 12px; color: #fff; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; position: relative; }
 .cold { background: #6d7c8b; }
 .boiling { background: #c45c26; }
 .drawn { background: #6f7d4e; }
-.err { color: #9b1c1c; }
+.cert-badge { font-style: normal; font-size: 0.78em; background: rgba(255,255,255,0.22); border-radius: 10px; padding: 1px 8px; }
+.cert-badge.none { background: rgba(0,0,0,0.28); }
+.err { color: #9b1c1c; min-height: 1.2em; }
 .hint { color: #6b5a48; font-size: 0.92em; }
 label { display: block; margin: 8px 0; }
-input, button { font: inherit; padding: 8px 10px; margin: 4px 6px 4px 0; }
+input, button, select { font: inherit; padding: 8px 10px; margin: 4px 6px 4px 0; }
+.nav { display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #d8c7b2; padding-bottom: 10px; margin-bottom: 12px; }
+.nav .brand { font-weight: bold; font-size: 1.15em; margin-right: 8px; }
+.nav .spacer { flex: 1; }
+.nav button.on { background: #c45c26; color: #fff; border-color: #c45c26; }
+.drawer { margin-top: 12px; padding: 14px 16px; background: #fff8ee; border: 1px solid #ddc9b0; border-radius: 10px; }
+.panel { background: #fff8ee; border: 1px solid #ddc9b0; border-radius: 10px; padding: 12px 16px; margin: 14px 0; }
+table { border-collapse: collapse; width: 100%; background: #fff; }
+th, td { border: 1px solid #e3d5c0; padding: 6px 8px; text-align: left; font-size: 0.95em; }
+.active-row { background: #fdf2e2; }
+.done { color: #6f7d4e; font-size: 0.9em; }
+[hidden] { display: none; }
