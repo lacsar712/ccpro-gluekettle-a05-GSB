@@ -1,11 +1,41 @@
-body { margin: 0; font-family: Georgia, serif; background: #f3ece3; color: #3a2a1d; }
-.wrap { max-width: 920px; margin: 0 auto; padding: 28px 16px 48px; }
-.row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; }
-.kettle { min-width: 110px; min-height: 140px; border-radius: 50% 50% 12px 12px; color: #fff; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+body { margin: 0; font-family: Georgia, "Songti SC", serif; background: #f3ece3; color: #3a2a1d; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 20px 16px 48px; }
+.topbar { display: flex; align-items: center; gap: 18px; background: #3a2a1d; color: #f3ece3; padding: 10px 20px; position: sticky; top: 0; z-index: 5; }
+.topbar .brand { font-weight: bold; font-size: 1.08em; }
+.topbar nav { display: flex; gap: 8px; flex: 1; }
+.topbar .nav { background: transparent; color: #e8dccb; border: 1px solid #6b5a48; border-radius: 6px; padding: 6px 14px; cursor: pointer; margin: 0; }
+.topbar .nav.on { background: #c45c26; border-color: #c45c26; color: #fff; }
+.topbar .who { font-size: 0.9em; color: #d8c9b4; }
+.topbar .link { background: none; border: 0; color: #e0b48f; text-decoration: underline; cursor: pointer; padding: 0 0 0 6px; margin: 0; }
+.row { display: flex; gap: 10px; overflow-x: auto; padding: 8px 0 14px; }
+.kettle { min-width: 118px; min-height: 148px; border-radius: 50% 50% 12px 12px; color: #fff; border: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; position: relative; }
+.kettle.picked { outline: 3px solid #3a2a1d; outline-offset: 2px; }
+.kettle small { font-size: 0.78em; opacity: 0.92; background: rgba(0,0,0,0.22); border-radius: 8px; padding: 1px 8px; }
+.kettle small { }
 .cold { background: #6d7c8b; }
 .boiling { background: #c45c26; }
 .drawn { background: #6f7d4e; }
+.drawer, .panel { background: #fffaf2; border: 1px solid #e0d2bf; border-radius: 10px; padding: 16px 18px; margin-top: 14px; }
+.certline { border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 0.95em; }
+.certline.ok { background: #eef3e4; border: 1px solid #bcc89a; }
+.certline.no { background: #f7e7e2; border: 1px solid #d9a895; }
+.statusbtns { margin-top: 10px; }
 .err { color: #9b1c1c; }
+.msg { color: #3f6222; }
 .hint { color: #6b5a48; font-size: 0.92em; }
 label { display: block; margin: 8px 0; }
-input, button { font: inherit; padding: 8px 10px; margin: 4px 6px 4px 0; }
+input, button, select { font: inherit; padding: 8px 10px; margin: 4px 6px 4px 0; }
+input:disabled, button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.small { padding: 3px 12px; font-size: 0.88em; }
+.filter { display: flex; align-items: center; gap: 8px; }
+.certtable { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.93em; }
+.certtable th, .certtable td { border-bottom: 1px solid #e6d9c6; padding: 8px 8px; text-align: left; white-space: nowrap; }
+.certtable th { color: #6b5a48; font-weight: normal; background: #f6ecdf; }
+.certtable .empty { text-align: center; color: #8a7a66; padding: 18px; }
+.badge { border-radius: 10px; padding: 2px 10px; font-size: 0.84em; }
+.badge.live { background: #e3edd0; color: #3f6222; }
+.badge.done { background: #e4e0da; color: #6b5a48; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.two .card { background: #fff; border: 1px solid #e0d2bf; border-radius: 10px; padding: 12px 16px; }
+.revokebox { min-height: 42px; }
+@media (max-width: 720px) { .two { grid-template-columns: 1fr; } .topbar { flex-wrap: wrap; } }
